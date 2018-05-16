@@ -1,6 +1,6 @@
 {
     "name": "abstract-database",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Abstract layer for mongoose/mongodb",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -14,10 +14,10 @@
     "author": "Frank Merema",
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "9.6.4",
-        "@types/mongoose": "5.0.10"
+        "@types/node": "10.0.9",
+        "@types/mongoose": "5.0.13"
     },
-    "dependencies": {
-        "mongoose": "5.0.16"
+    "peerDependencies": {
+        "mongoose": "5.1.1"
     }
 }
