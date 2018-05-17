@@ -1,12 +1,13 @@
 import {
     connect,
-    Mongoose,
+    ConnectionOptions,
+    Document,
     model,
     Model,
-    Schema,
-    Document,
+    ModelPopulateOptions,
+    Mongoose,
     QueryFindOneAndUpdateOptions,
-    ConnectionOptions
+    Schema
 } from 'mongoose';
 
 export class Database {
@@ -47,11 +48,15 @@ export class Collection<T extends Document> {
             });
     }
 
-    find(mongoQuery: any, outputFields?: object, limit?: number): Promise<T[]> {
+    find(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions, limit?: number): Promise<T[]> {
         return this.dbConnection
             .then(() => {
                 let query = this.model
                     .find(mongoQuery, outputFields);
+
+                if (populateOptions) {
+                    query.populate(populateOptions);
+                }
 
                 if (limit) {
                     query = query.limit(limit);
@@ -61,8 +66,8 @@ export class Collection<T extends Document> {
             });
     }
 
-    findOne(mongoQuery: any, outputFields?: object): Promise<T> {
-        return this.find(mongoQuery, outputFields)
+    findOne(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions): Promise<T> {
+        return this.find(mongoQuery, outputFields, populateOptions)
             .then((records: T[]) => records[0]);
     }
 
