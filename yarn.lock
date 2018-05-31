@@ -20,9 +20,9 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/mongoose@5.0.13":
-  version "5.0.13"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/mongoose/-/mongoose-5.0.13.tgz#5f9844588f63a9603f06a8a38eba82a99c3fea32"
+"@types/mongoose@5.0.15":
+  version "5.0.15"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.0.15.tgz#80da6b1f5225ddcfd75aec03a633f5b7b4d05786"
   dependencies:
     "@types/events" "*"
     "@types/mongodb" "*"
@@ -32,115 +32,6 @@
   version "10.0.3"
   resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/node/-/node-10.0.3.tgz#1f89840c7aac2406cc43a2ecad98fc02a8e130e4"
 
-"@types/node@10.0.9":
-  version "10.0.9"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/node/-/node-10.0.9.tgz#7cb73a6ef9cf4e41e5354e114e824bfdfd96a6b4"
-
-async@2.1.4:
-  version "2.1.4"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/async/-/async-2.1.4.tgz#2d2160c7788032e4dd6cbe2502f1f9a2c8f6cde4"
-  dependencies:
-    lodash "^4.14.0"
-
-bluebird@3.5.0:
-  version "3.5.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
-
-bson@~1.0.4, bson@~1.0.5:
-  version "1.0.6"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/bson/-/bson-1.0.6.tgz#444db59ddd4c24f0cb063aabdc5c8c7b0ceca912"
-
-debug@2.6.9:
-  version "2.6.9"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
-  dependencies:
-    ms "2.0.0"
-
-kareem@2.0.7:
-  version "2.0.7"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/kareem/-/kareem-2.0.7.tgz#8d260366a4df4236ceccec318fcf10c17c5beb22"
-
-lodash.get@4.4.2:
-  version "4.4.2"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-
-lodash@^4.14.0:
-  version "4.17.10"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
-
-mongodb-core@3.0.8:
-  version "3.0.8"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mongodb-core/-/mongodb-core-3.0.8.tgz#8d401f4eab6056c0d874a3d5844a4844f761d4d7"
-  dependencies:
-    bson "~1.0.4"
-    require_optional "^1.0.1"
-
-mongodb@3.0.8:
-  version "3.0.8"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mongodb/-/mongodb-3.0.8.tgz#2c1daecac9a0ec2de2f2aea4dc97d76ae70f8951"
-  dependencies:
-    mongodb-core "3.0.8"
-
-mongoose-legacy-pluralize@1.0.2:
-  version "1.0.2"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
-
-mongoose@5.1.1:
-  version "5.1.1"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mongoose/-/mongoose-5.1.1.tgz#a7e925607e76032e5ef20b3035a357bc8581b45e"
-  dependencies:
-    async "2.1.4"
-    bson "~1.0.5"
-    kareem "2.0.7"
-    lodash.get "4.4.2"
-    mongodb "3.0.8"
-    mongoose-legacy-pluralize "1.0.2"
-    mpath "0.4.1"
-    mquery "3.0.0"
-    ms "2.0.0"
-    regexp-clone "0.0.1"
-    sliced "1.0.1"
-
-mpath@0.4.1:
-  version "0.4.1"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mpath/-/mpath-0.4.1.tgz#ed10388430380bf7bbb5be1391e5d6969cb08e89"
-
-mquery@3.0.0:
-  version "3.0.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/mquery/-/mquery-3.0.0.tgz#e5f387dbabc0b9b69859e550e810faabe0ceabb0"
-  dependencies:
-    bluebird "3.5.0"
-    debug "2.6.9"
-    regexp-clone "0.0.1"
-    sliced "0.0.5"
-
-ms@2.0.0:
-  version "2.0.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-
-regexp-clone@0.0.1:
-  version "0.0.1"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/regexp-clone/-/regexp-clone-0.0.1.tgz#a7c2e09891fdbf38fbb10d376fb73003e68ac589"
-
-require_optional@^1.0.1:
-  version "1.0.1"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/require_optional/-/require_optional-1.0.1.tgz#4cf35a4247f64ca3df8c2ef208cc494b1ca8fc2e"
-  dependencies:
-    resolve-from "^2.0.0"
-    semver "^5.1.0"
-
-resolve-from@^2.0.0:
-  version "2.0.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
-
-semver@^5.1.0:
-  version "5.5.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
-
-sliced@0.0.5:
-  version "0.0.5"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/sliced/-/sliced-0.0.5.tgz#5edc044ca4eb6f7816d50ba2fc63e25d8fe4707f"
-
-sliced@1.0.1:
-  version "1.0.1"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
+"@types/node@10.1.4":
+  version "10.1.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.4.tgz#606651d3f8a8bec08b8cb262161aab9209f4a29d"

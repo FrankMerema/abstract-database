@@ -84,4 +84,23 @@ export class Collection<T extends Document> {
                 return this.model.findOneAndRemove(mongoQuery);
             });
     }
+
+    aggregate(mongoQuery: any, outputFields?: object, limit?: number): Promise<T[]> {
+        return this.dbConnection
+            .then(() => {
+                const aggregateParams: object[] = [{'$match': mongoQuery}];
+
+                if (outputFields) {
+                    aggregateParams.push({'$project': outputFields});
+                }
+
+                let request = this.model
+                    .aggregate(aggregateParams);
+
+                if (limit) {
+                    request = request.limit(limit);
+                }
+                return request.exec();
+            });
+    }
 }
