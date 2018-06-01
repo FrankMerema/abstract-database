@@ -103,4 +103,9 @@ export class Collection<T extends Document> {
                 return request.exec();
             });
     }
+
+    aggregateOne(mongoQuery: any, outputFields?: object): Promise<T> {
+        return this.aggregate(mongoQuery, outputFields)
+            .then((records: T[]) => records[0]);
+    }
 }
