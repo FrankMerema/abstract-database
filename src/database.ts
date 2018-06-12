@@ -29,6 +29,25 @@ export class Database {
     }
 }
 
+export class MongoAtlasDatabase {
+
+    private readonly mongoose: Promise<Mongoose>;
+
+    constructor(username: string, password: string, host: string, database: string, options?: ConnectionOptions) {
+        this.mongoose = connect(`mongodb+srv://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${host}/${database}?retryWrites=true`, options);
+        this.mongoose.then(() => {
+            console.log('Connected to MongoDB');
+        }).catch(error => {
+            console.log(error);
+            throw error;
+        });
+    }
+
+    getConnection(): Promise<Mongoose> {
+        return this.mongoose;
+    }
+}
+
 
 export class Collection<T extends Document> {
     private model: Model<T>;
