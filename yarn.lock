@@ -3,35 +3,31 @@
 
 
 "@types/bson@*":
-  version "1.0.8"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/bson/-/bson-1.0.8.tgz#6ad272b3f049e9598ec33aed09cf56d8946b75f1"
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.11.tgz#c95ad69bb0b3f5c33b4bb6cc86d86cafb273335c"
   dependencies:
     "@types/node" "*"
 
 "@types/events@*":
   version "1.2.0"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
 
 "@types/mongodb@*":
-  version "3.0.17"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/mongodb/-/mongodb-3.0.17.tgz#942832f31d2451b0f54d9aeb449257abc9b74eb7"
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.4.tgz#f0f6dc8d509500c4a8213238066b68f0c8cb25a9"
   dependencies:
     "@types/bson" "*"
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/mongoose@5.0.15":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.0.15.tgz#80da6b1f5225ddcfd75aec03a633f5b7b4d05786"
+"@types/mongoose@5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.2.5.tgz#3a8467549744c105515299acc6f590e5403fb277"
   dependencies:
     "@types/events" "*"
     "@types/mongodb" "*"
     "@types/node" "*"
 
-"@types/node@*":
-  version "10.0.3"
-  resolved "https://npmjs.build.edubase.malmberg.nl/repository/npm/@types/node/-/node-10.0.3.tgz#1f89840c7aac2406cc43a2ecad98fc02a8e130e4"
-
-"@types/node@10.1.4":
-  version "10.1.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.4.tgz#606651d3f8a8bec08b8cb262161aab9209f4a29d"
+"@types/node@*", "@types/node@10.7.1":
+  version "10.7.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.7.1.tgz#b704d7c259aa40ee052eec678758a68d07132a2e"
