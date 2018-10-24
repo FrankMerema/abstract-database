@@ -1,5 +1,5 @@
 {
-    "name": "abstract-database",
+    "name": "@frankmerema/abstract-database",
     "version": "0.0.8",
     "description": "Abstract layer for mongoose/mongodb",
     "main": "dist/index.js",
