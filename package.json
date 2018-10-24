@@ -14,10 +14,13 @@
     "author": "Frank Merema",
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "10.7.1",
-        "@types/mongoose": "5.2.5"
+        "@types/mongoose": "5.2.19",
+        "@types/node": "10.12.0"
     },
     "peerDependencies": {
-        "mongoose": "5.2.9"
+        "mongoose": "5.3.6"
+    },
+    "dependencies": {
+        "rxjs": "6.3.3"
     }
 }

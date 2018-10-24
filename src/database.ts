@@ -9,41 +9,43 @@ import {
     QueryFindOneAndUpdateOptions,
     Schema
 } from 'mongoose';
+import { from, Observable, throwError } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 export class Database {
 
-    private readonly mongoose: Promise<Mongoose>;
+    private readonly mongoose: Observable<Mongoose>;
 
     constructor(host: string, port: number, database: string, options?: ConnectionOptions) {
-        this.mongoose = connect(`mongodb://${host}:${port}/${database}`, options);
-        this.mongoose.then(() => {
+        this.mongoose = from(connect(`mongodb://${host}:${port}/${database}`, options));
+        this.mongoose.subscribe(() => {
             console.log('Connected to MongoDB');
-        }).catch(error => {
+        }, error => {
             console.log(error);
-            throw error;
+            throwError(error);
         });
     }
 
-    getConnection(): Promise<Mongoose> {
+    getConnection(): Observable<Mongoose> {
         return this.mongoose;
     }
 }
 
 export class MongoAtlasDatabase {
 
-    private readonly mongoose: Promise<Mongoose>;
+    private readonly mongoose: Observable<Mongoose>;
 
     constructor(username: string, password: string, host: string, database: string, options?: ConnectionOptions) {
-        this.mongoose = connect(`mongodb+srv://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${host}/${database}?retryWrites=true`, options);
-        this.mongoose.then(() => {
+        this.mongoose = from(connect(`mongodb+srv://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${host}/${database}?retryWrites=true`, options));
+        this.mongoose.subscribe(() => {
             console.log('Connected to MongoDB');
-        }).catch(error => {
+        }, error => {
             console.log(error);
             throw error;
         });
     }
 
-    getConnection(): Promise<Mongoose> {
+    getConnection(): Observable<Mongoose> {
         return this.mongoose;
     }
 }
@@ -51,25 +53,23 @@ export class MongoAtlasDatabase {
 
 export class Collection<T extends Document> {
     private model: Model<T>;
-    private dbConnection: Promise<Mongoose>;
+    private dbConnection: Observable<Mongoose>;
 
-    constructor(dbConnection: Promise<Mongoose>, name: string, schema: Schema, plural?: string) {
+    constructor(dbConnection: Observable<Mongoose>, name: string, schema: Schema, plural?: string) {
         this.dbConnection = dbConnection;
         this.model = model<T>(name, schema, plural || name);
     }
 
 
-    save(data: T): Promise<T> {
+    save(data: T): Observable<T> {
         return this.dbConnection
-            .then(() => {
-                return new this.model(data)
-                    .save();
-            });
+            .pipe(switchMap(() =>
+                from(new this.model(data).save())));
     }
 
-    find(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions, limit?: number): Promise<T[]> {
+    find(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions, limit?: number): Observable<T[]> {
         return this.dbConnection
-            .then(() => {
+            .pipe(switchMap(() => {
                 let query = this.model
                     .find(mongoQuery, outputFields);
 
@@ -81,32 +81,30 @@ export class Collection<T extends Document> {
                     query = query.limit(limit);
                 }
 
-                return query.exec();
-            });
+                return from(query.exec());
+            }));
     }
 
-    findOne(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions): Promise<T> {
+    findOne(mongoQuery: any, outputFields?: object, populateOptions?: ModelPopulateOptions): Observable<T> {
         return this.find(mongoQuery, outputFields, populateOptions)
-            .then((records: T[]) => records[0]);
+            .pipe(map((records: T[]) => records[0]));
     }
 
-    findOneAndUpdate(mongoQuery: any, update: any, options?: QueryFindOneAndUpdateOptions): Promise<T> {
+    findOneAndUpdate(mongoQuery: any, update: any, options?: QueryFindOneAndUpdateOptions): Observable<T> {
         return this.dbConnection
-            .then(() => {
-                return this.model.findOneAndUpdate(mongoQuery, update, options);
-            });
+            .pipe(switchMap(() =>
+                from(this.model.findOneAndUpdate(mongoQuery, update, options))));
     }
 
-    findOneAndRemove(mongoQuery: any): Promise<T> {
+    findOneAndRemove(mongoQuery: any): Observable<T> {
         return this.dbConnection
-            .then(() => {
-                return this.model.findOneAndRemove(mongoQuery);
-            });
+            .pipe(switchMap(() =>
+                from(this.model.findByIdAndRemove(mongoQuery))));
     }
 
-    aggregate(mongoQuery: any, outputFields?: object, limit?: number): Promise<T[]> {
+    aggregate(mongoQuery: any, outputFields?: object, limit?: number): Observable<T[]> {
         return this.dbConnection
-            .then(() => {
+            .pipe(switchMap(() => {
                 const aggregateParams: object[] = [{'$match': mongoQuery}];
 
                 if (outputFields) {
@@ -119,12 +117,12 @@ export class Collection<T extends Document> {
                 if (limit) {
                     request = request.limit(limit);
                 }
-                return request.exec();
-            });
+                return from(request.exec());
+            }));
     }
 
-    aggregateOne(mongoQuery: any, outputFields?: object): Promise<T> {
+    aggregateOne(mongoQuery: any, outputFields?: object): Observable<T> {
         return this.aggregate(mongoQuery, outputFields)
-            .then((records: T[]) => records[0]);
+            .pipe(map((records: T[]) => records[0]));
     }
 }
