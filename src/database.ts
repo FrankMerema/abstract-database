@@ -36,7 +36,8 @@ export class MongoAtlasDatabase {
     private readonly mongoose: Observable<Mongoose>;
 
     constructor(username: string, password: string, host: string, database: string, options?: ConnectionOptions) {
-        this.mongoose = from(connect(`mongodb+srv://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${host}/${database}?retryWrites=true`, options));
+        this.mongoose = from(connect(
+            `mongodb+srv://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${host}/${database}?retryWrites=true`, options));
         this.mongoose.subscribe(() => {
             console.log('Connected to MongoDB');
         }, error => {
@@ -104,7 +105,7 @@ export class Collection<T extends Document> {
 
     aggregate(mongoQuery: any, outputFields?: object, limit?: number): Observable<T[]> {
         return this.dbConnection
-            .pipe(switchMap(() => {
+            .pipe(map(() => {
                 const aggregateParams: object[] = [{'$match': mongoQuery}];
 
                 if (outputFields) {
@@ -117,7 +118,8 @@ export class Collection<T extends Document> {
                 if (limit) {
                     request = request.limit(limit);
                 }
-                return from(request.exec());
+
+                return request.exec();
             }));
     }
 

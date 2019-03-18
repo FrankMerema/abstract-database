@@ -1,26 +1,32 @@
 {
-    "name": "@frankmerema/abstract-database",
-    "version": "0.1.0",
-    "description": "Abstract layer for mongoose/mongodb",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "tsc"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/FrankMerema/abstract-database.git"
-    },
-    "author": "Frank Merema",
-    "license": "MIT",
-    "devDependencies": {
-        "@types/mongoose": "5.2.19",
-        "@types/node": "10.12.0"
-    },
-    "peerDependencies": {
-        "mongoose": "5.3.6"
-    },
-    "dependencies": {
-        "rxjs": "6.3.3"
-    }
+  "name": "@frankmerema/abstract-database",
+  "version": "0.1.0",
+  "description": "Abstract layer for mongoose/mongodb",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "lint": "tslint -p tslint.json",
+    "pre-publish": "npm-run-all clean lint build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankMerema/abstract-database.git"
+  },
+  "author": "Frank Merema",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mongoose": "5.3.22",
+    "@types/node": "11.11.3",
+    "rimraf": "2.6.3",
+    "tslint": "5.14.0",
+    "typescript": "3.3.3333"
+  },
+  "peerDependencies": {
+    "mongoose": "5.4.19"
+  },
+  "dependencies": {
+    "rxjs": "6.4.0"
+  }
 }
