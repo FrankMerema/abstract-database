@@ -1,6 +1,6 @@
 {
   "name": "@frankmerema/abstract-database",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Abstract layer for mongoose/mongodb",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
