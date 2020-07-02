@@ -28,6 +28,6 @@
     "mongoose": "5.4.19"
   },
   "dependencies": {
-    "rxjs": "6.5.5"
+    "rxjs": "6.6.0"
   }
 }
